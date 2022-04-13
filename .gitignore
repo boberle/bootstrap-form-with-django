@@ -1,0 +1,4 @@
+__pycache__/
+.idea/
+venv/
+form_bootstrap_project/db.sqlite3

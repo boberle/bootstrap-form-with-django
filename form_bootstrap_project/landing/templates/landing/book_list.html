@@ -1,0 +1,11 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+
+  <h1>Book list</h1>
+
+  {% for book in book %}
+    <p>{{ book.title }} ({{ book.author }})</p>
+  {% endfor %}
+
+{% endblock %}
