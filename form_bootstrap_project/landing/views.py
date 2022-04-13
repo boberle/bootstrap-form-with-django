@@ -17,4 +17,4 @@ class BookCreateView(CreateView):
 class BookListView(ListView):
     template_name = 'landing/book_list.html'
     model = Book
-    context_object_name = 'users'
+    context_object_name = 'books'
