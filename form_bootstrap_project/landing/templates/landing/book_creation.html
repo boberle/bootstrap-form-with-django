@@ -4,9 +4,35 @@
 
   <h1>New book</h1>
 
-  <form action="{% url 'new-book' %}" method="POST">
-    {{ form }}
+  <form action="." method="POST">
+    {%  csrf_token %}
+    {% for field in form %}
+      {% if field.template %}
+        {% include field.template %}
+      {% else %}
+        {{ field.label }}
+        {{ field }}
+        {{ field.errors }}
+      {% endif %}
+    {% endfor %}
     <button type="submit">create</button>
   </form>
+
+  <script>
+    (function () {
+      // adapted from https://getbootstrap.com/docs/5.0/forms/validation/
+      var forms = document.querySelectorAll('.needs-validation')
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  </script>
 
 {% endblock %}
