@@ -4,11 +4,12 @@ from django.forms.models import ModelForm
 
 from .models import Book
 from .fields import (
-    CustomCharField,
-    BootstrapTypedChoiceField,
-    BootstrapIntegerField,
-    BootstrapCharField,
     BootstrapBooleanField,
+    BootstrapCharField,
+    BootstrapCharFieldWithTextarea,
+    BootstrapIntegerField,
+    BootstrapTypedChoiceField,
+    CustomCharField,
 )
 
 
@@ -49,12 +50,22 @@ class BookForm(ModelForm):
         choices=Book._meta.get_field('category').get_choices(),
         required=False,
     )
+    description = BootstrapCharFieldWithTextarea(
+        required=False,
+    )
 
     class Meta:
         model = Book
         # you need to add the fields here, even if defined as class attribute,
         # in order for them to be bound to the form
-        fields = ['title', 'author', 'year', 'is_available', 'category']
+        fields = [
+            'title',
+            'author',
+            'year',
+            'is_available',
+            'category',
+            'description',
+        ]
         label_attrs = dict(
             year={'class': 'more foo bar'},
         )

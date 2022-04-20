@@ -17,3 +17,4 @@ class Book(models.Model):
         choices=CATEGORY_CHOICES,
         null=True,
     )
+    description = models.TextField(null=True)

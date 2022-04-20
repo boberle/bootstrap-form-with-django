@@ -1,5 +1,11 @@
 from django import forms
-from django.forms.widgets import TextInput, NumberInput, CheckboxInput, Select
+from django.forms.widgets import (
+    CheckboxInput,
+    NumberInput,
+    Select,
+    TextInput,
+    Textarea,
+)
 from django.forms.boundfield import BoundField
 
 
@@ -103,6 +109,11 @@ class BootstrapInputAttributesMixin(BoostrapAttributesMixin):
 
 class BootstrapCharField(BootstrapInputAttributesMixin, CustomCharField):
     pass
+
+
+class BootstrapCharFieldWithTextarea(
+        BootstrapInputAttributesMixin, CustomCharField):
+    _default_widget = Textarea(attrs={'class': 'form-control'})
 
 
 class BootstrapIntegerField(BootstrapInputAttributesMixin, CustomIntegerField):
