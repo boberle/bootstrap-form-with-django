@@ -4,6 +4,7 @@ from django.forms.models import ModelForm
 
 from .models import Book
 from .fields import (
+    CustomCharField,
     BootstrapTypedChoiceField,
     BootstrapIntegerField,
     BootstrapCharField,
@@ -13,8 +14,8 @@ from .fields import (
 
 class BookForm(ModelForm):
 
-    # example of how it works with a non-custom form field
-    title = BootstrapCharField(
+    # example of how it works with a simple custom form field
+    title = CustomCharField(
         widget=TextInput(attrs={'class': 'form-control'}),
         label_attrs={'class': 'form-label'},
         wrapper_attrs={'class': 'mb-3'},
@@ -31,7 +32,7 @@ class BookForm(ModelForm):
         ],
     )
 
-    # using various custom form fields
+    # using various bootstrap form fields
     author = BootstrapCharField(
         help_text="the author",
     )
